@@ -2,44 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Verification Result | Docification</title>
+    <title>Docification | Verification Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
 
-<header>
+<body class="result-body">
+
+<header class="top-header">
     <h2>Docification</h2>
 </header>
 
-<div class="container">
+<div class="result-container">
 
-    <div class="card result-card">
+    <div class="result-card-main">
+        <h1>Document Verification Result</h1>
+        <p class="subtitle">
+            Below is the detailed verification summary of your uploaded document
+        </p>
 
-        <h1> Document Verification Result</h1>
-        <p class="subtitle">AI-powered verification completed successfully</p>
+        <div class="divider"></div>
 
-        <div class="status success">
-             Document Status verified: <strong>ACCEPTED</strong>
+        <div class="result-status">
+            {% if report %}
+                <ul class="result-list">
+                    {% for r in report %}
+                        <li>{{ r }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No verification data available.</p>
+            {% endif %}
         </div>
 
-        <div class="score-box">
-            <h2>AI Quality Score</h2>
-            <div class="score">92%</div>
-            <p class="note">Your document meets submission standards</p>
+        <div class="action-buttons">
+            <a href="/" class="btn-primary">🔄 Verify Another Document</a>
+        </div>
+    </div>
+
+    <div class="result-side-card">
+        <h2>Verification Summary</h2>
+
+        <div class="summary-step">📄 Document format validation</div>
+        <div class="summary-step">📏 File size & quality check</div>
+        <div class="summary-step">✅ Submission readiness confirmation</div>
+
+        <div class="progress-container">
+            <div class="progress-bar-complete"></div>
         </div>
 
-        <div class="analysis">
-            <h3>🔍 AI Analysis Summary</h3>
-            <ul>
-                <li> Image clarity is sufficient</li>
-                <li>File size within limit</li>
-                <li> Format supported</li>
-                <li> Low rejection risk</li>
-            </ul>
-        </div>
-
-        <a href="/" class="back-btn">⬅ Verify Another Document</a>
-
+        <p class="summary-text">
+            The document has been processed successfully and evaluated for submission standards.
+        </p>
     </div>
 
 </div>
