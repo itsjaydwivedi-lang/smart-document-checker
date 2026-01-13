@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Docification | Smart Document Checker</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -15,12 +15,12 @@
 
     <div class="card">
         <h1>Smart Document Checker</h1>
-        <p class="subtitle">system to verify document clarity before submission</p>
+        <p class="subtitle">Verify document quality before submission</p>
 
-        <form method="POST" enctype="multipart/form-data" id="docForm">
+        <form method="POST" enctype="multipart/form-data">
 
             <label>Document Type</label>
-            <select name="doc_type" required>
+            <select required>
                 <option value="">Select</option>
                 <option>Certificate</option>
                 <option>ID Proof</option>
@@ -28,54 +28,33 @@
             </select>
 
             <label>Quality Check</label>
-            <select name="quality" required>
-                <option>Blur Detection</option>
+            <select required>
+                <option>Clarity Check</option>
                 <option>Brightness Check</option>
             </select>
 
-            <label>Upload Document</label>
             <label class="upload-box">
-                 Upload Document
+                📂 Upload Document
                 <input type="file" name="documents" hidden required>
             </label>
-            <p class="file-name" id="file-name">No file selected</p>
 
-            <button type="button" class="verify-btn" id="verifyBtn">
-                 Verify Document
-            </button>
+            <p id="file-name">No file selected</p>
 
+            <button type="submit" class="verify-btn">Verify Document</button>
         </form>
     </div>
 
     <div class="card info">
-        <h2> Verification Engine</h2>
-
-        <div class="step"> Checking clarity & blur</div>
-        <div class="step"> Detecting rejection risks</div>
-        <div class="step"> Making document submission-ready</div>
+        <h2>Verification Process</h2>
+        <div class="step">📄 Document format validation</div>
+        <div class="step">🔍 Quality & size check</div>
+        <div class="step">✅ Submission readiness confirmation</div>
 
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
     </div>
 
-</div>
-
-
-<div id="Popup" class="-popup hidden">
-    <div class="-popup-content">
-        <h3>Verification Engine</h3>
-
-        <p class="step"> Checking clarity & blur</p>
-        <p class="step"> Detecting rejection risks</p>
-        <p class="step"> Making document submission-ready</p>
-
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <p id="progressText">Initializing AI...</p>
-    </div>
 </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
