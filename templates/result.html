@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Docification | Verification Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
 
-<body class="result-body">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="result-page">
 
 <header class="top-header">
     <h2>Docification</h2>
@@ -14,48 +18,54 @@
 
 <div class="result-container">
 
-    <div class="result-card-main">
-        <h1>Document Verification Result</h1>
+    <div class="result-card">
+
+        <h1>📄 Document Verification Result</h1>
         <p class="subtitle">
-            Below is the detailed verification summary of your uploaded document
+            Your document has been successfully checked using standard quality validation rules.
         </p>
 
-        <div class="divider"></div>
-
-        <div class="result-status">
-            {% if report %}
-                <ul class="result-list">
-                    {% for r in report %}
-                        <li>{{ r }}</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No verification data available.</p>
-            {% endif %}
+        <!-- STATUS BADGE -->
+        <div class="status-badge success">
+            ✔ Verification Completed
         </div>
 
+        <!-- REPORT DETAILS -->
+        <div class="report-box">
+            <h3>📊 Verification Summary</h3>
+
+            <ul class="report-list">
+                {% for r in report %}
+                <li>
+                    <span class="material-icons">check_circle</span>
+                    {{ r }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- QUALITY METER -->
+        <div class="quality-meter">
+            <p>📈 Overall Document Quality</p>
+            <div class="meter-bar">
+                <div class="meter-fill"></div>
+            </div>
+            <span class="quality-text">High Quality</span>
+        </div>
+
+        <!-- ACTION BUTTONS -->
         <div class="action-buttons">
-            <a href="/" class="btn-primary">🔄 Verify Another Document</a>
-        </div>
-    </div>
-
-    <div class="result-side-card">
-        <h2>Verification Summary</h2>
-
-        <div class="summary-step">📄 Document format validation</div>
-        <div class="summary-step">📏 File size & quality check</div>
-        <div class="summary-step">✅ Submission readiness confirmation</div>
-
-        <div class="progress-container">
-            <div class="progress-bar-complete"></div>
+            <a href="/" class="btn secondary">🔄 Check Another Document</a>
+            <button onclick="window.print()" class="btn primary">🖨 Download Report</button>
         </div>
 
-        <p class="summary-text">
-            The document has been processed successfully and evaluated for submission standards.
-        </p>
     </div>
 
 </div>
+
+<footer class="footer">
+    <p>© 2026 Docification • Smart Document Checker</p>
+</footer>
 
 </body>
 </html>
