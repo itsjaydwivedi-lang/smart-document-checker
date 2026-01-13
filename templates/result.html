@@ -18,54 +18,42 @@
 
 <div class="result-container">
 
-    <div class="result-card">
+    <!-- RESULT BOX START -->
+    <div class="result-box">
 
         <h1>📄 Document Verification Result</h1>
+
         <p class="subtitle">
             Your document has been successfully checked using standard quality validation rules.
         </p>
 
-        <!-- STATUS BADGE -->
-        <div class="status-badge success">
-            ✔ Verification Completed
-        </div>
+        <p class="status-text">✔ Verification Completed</p>
 
-        <!-- REPORT DETAILS -->
-        <div class="report-box">
-            <h3>📊 Verification Summary</h3>
+        <h3>📊 Verification Summary</h3>
+        <ul class="report-list">
+            {% for r in report %}
+            <li>✔ {{ r }}</li>
+            {% endfor %}
+        </ul>
 
-            <ul class="report-list">
-                {% for r in report %}
-                <li>
-                    <span class="material-icons">check_circle</span>
-                    {{ r }}
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+        <h4>📈 Overall Document Quality</h4>
+        <p class="quality-text">High Quality</p>
 
-        <!-- QUALITY METER -->
-        <div class="quality-meter">
-            <p>📈 Overall Document Quality</p>
-            <div class="meter-bar">
-                <div class="meter-fill"></div>
-            </div>
-            <span class="quality-text">High Quality</span>
-        </div>
-
-        <!-- ACTION BUTTONS -->
         <div class="action-buttons">
-            <a href="/" class="btn secondary">🔄 Check Another Document</a>
-            <button onclick="window.print()" class="btn primary">🖨 Download Report</button>
+            <a href="/" class="link-btn">🔄 Check Another Document</a>
+            <button onclick="window.print()" class="print-btn">🖨 Download Report</button>
         </div>
+
+        <footer class="result-footer">
+            © 2026 Docification • Smart Document Checker
+        </footer>
 
     </div>
+    <!-- RESULT BOX END -->
 
 </div>
 
-<footer class="footer">
-    <p>© 2026 Docification • Smart Document Checker</p>
-</footer>
-
 </body>
+
 </html>
+
