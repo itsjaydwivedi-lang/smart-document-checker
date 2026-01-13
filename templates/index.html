@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Docification | Smart Document Checker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h2>Docification</h2>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h1>Smart Document Checker</h1>
+        <p class="subtitle">system to verify document clarity before submission</p>
+
+        <form method="POST" enctype="multipart/form-data" id="docForm">
+
+            <label>Document Type</label>
+            <select name="doc_type" required>
+                <option value="">Select</option>
+                <option>Certificate</option>
+                <option>ID Proof</option>
+                <option>Marksheet</option>
+            </select>
+
+            <label>Quality Check</label>
+            <select name="quality" required>
+                <option>Blur Detection</option>
+                <option>Brightness Check</option>
+            </select>
+
+            <label>Upload Document</label>
+            <label class="upload-box">
+                 Upload Document
+                <input type="file" name="documents" hidden required>
+            </label>
+            <p class="file-name" id="file-name">No file selected</p>
+
+            <button type="button" class="verify-btn" id="verifyBtn">
+                 Verify Document
+            </button>
+
+        </form>
+    </div>
+
+    <div class="card info">
+        <h2> Verification Engine</h2>
+
+        <div class="step"> Checking clarity & blur</div>
+        <div class="step"> Detecting rejection risks</div>
+        <div class="step"> Making document submission-ready</div>
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="Popup" class="-popup hidden">
+    <div class="-popup-content">
+        <h3>Verification Engine</h3>
+
+        <p class="step"> Checking clarity & blur</p>
+        <p class="step"> Detecting rejection risks</p>
+        <p class="step"> Making document submission-ready</p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <p id="progressText">Initializing AI...</p>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
